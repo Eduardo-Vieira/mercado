@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Novo Item</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+    <form #form="ngForm" (ngSubmit)="submitForm(dados)" novalidate>
+      <ion-item>
+        <ion-label floating>Descrição</ion-label>
+        <ion-input type="text" required [(ngModel)]="dados.Descricao" name="Descricao" ngControl="Descricao"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Quantidade</ion-label>
+        <ion-input type="text" required [(ngModel)]="dados.Qty" name="Qty" ngControl="Qty"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Preço Unitário</ion-label>
+        <ion-input type="text" required [(ngModel)]="dados.valor" name="valor" ngControl="valor"></ion-input>
+      </ion-item>
+      <ion-item>
+           SubTotal: {{getMoeda(dados.Qty*dados.valor)}}
+      </ion-item>      
+      <button ion-button type="submit" block>Salvar</button>
+    </form>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <p style="text-align:center;">WR Soluções Informática &copy; 2017</p>
+  </ion-toolbar>
+</ion-footer>

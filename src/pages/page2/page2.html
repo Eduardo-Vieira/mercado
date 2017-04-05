@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+
+    <ion-title>Lista de Compras</ion-title>
+  
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  
+  <ion-card *ngFor="let item of items">
+    <ion-item>
+      <strong>Resgistro:</strong> {{item.idCompras}}<br>
+      <strong>Data:</strong> {{item.Data}}<br>
+      <strong>Nota:</strong> {{item.Nota}}<br>
+      <strong>Total:</strong> {{getMoeda(item.Total)}}<br>
+      <button color="danger" ion-button small icon-left (click)="deleta(item.idCompras)"><ion-icon name="trash"></ion-icon> Deleta</button>
+      <button color="warning" ion-button small icon-left (click)="editar(item)"><ion-icon name="create"></ion-icon> Editar</button>
+      <button color="info" ion-button small icon-left (click)="itens(item.idCompras)"><ion-icon name="basket"></ion-icon> Itens</button>
+    </ion-item>
+  </ion-card>
+
+<ion-fab right bottom>
+  <button ion-fab color="secondary" (click)="addReg()"><ion-icon name="add"></ion-icon></button>
+</ion-fab>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <p style="text-align:center;">WR Soluções Informática &copy; 2017</p>
+  </ion-toolbar>
+</ion-footer>

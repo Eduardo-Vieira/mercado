@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Nova Lista de Compras</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+    <form #form="ngForm" (ngSubmit)="submitForm(dados)" novalidate>
+      <ion-item>
+        <ion-label floating>Data</ion-label>
+        <ion-input type="text" required [(ngModel)]="dados.data" name="data" ngControl="data"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Nota ou nome do mercado</ion-label>
+        <ion-textarea [(ngModel)]="dados.nota" name="nota" ngControl="nota"></ion-textarea>
+      </ion-item>
+      <button ion-button type="submit" block>Salvar</button>
+    </form>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <p style="text-align:center;">WR Soluções Informática &copy; 2017</p>
+  </ion-toolbar>
+</ion-footer>

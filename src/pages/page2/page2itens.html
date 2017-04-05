@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Lista de Itens da Compras</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+<ion-card *ngFor="let item of items">
+    <ion-item>     
+      <strong>{{item.Descricao}}</strong><br>
+      {{item.Qty}} X {{getMoeda(item.valor)}}
+      <br>           
+      <button color="danger" ion-button small icon-left (click)="deleta(item.idItensCompras)" ><ion-icon name="trash"></ion-icon> Deleta</button>
+      <button color="warning" ion-button small icon-left (click)="editReg(item)" ><ion-icon name="create"></ion-icon> Editar</button>
+
+      <div item-right>
+        {{getMoeda(item.subTotal)}}
+      </div>
+
+    </ion-item>
+  </ion-card>
+
+<ion-fab right bottom>
+  <button ion-fab color="secondary" (click)="addReg()"><ion-icon name="add"></ion-icon></button>
+</ion-fab>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title>Total: {{getMoeda(TotalItens)}}</ion-title>
+  </ion-toolbar>
+</ion-footer>

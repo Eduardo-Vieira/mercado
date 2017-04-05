@@ -1,0 +1,41 @@
+<ion-menu [content]="content">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <ion-item>
+        <ion-avatar item-left>
+          <img src="assets/img/shop-cart-icon32.png" />
+        </ion-avatar>
+        <h2>Mercado</h2>
+        <p>Compre com a sua lista.</p>
+      </ion-item>
+    </ion-list>  
+    <ion-list>
+      <button style="color: #999999" menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+        <ion-icon name="{{p.ico}}" item-left></ion-icon>
+        {{p.title}}
+      </button>
+    </ion-list>
+  </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-buttons start>
+      <button ion-button icon-right (click)="closeApp()">
+        Sair
+        <ion-icon name="exit"></ion-icon>
+      </button>
+    </ion-buttons>
+    <p></p>
+  </ion-toolbar>
+</ion-footer>
+
+</ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
