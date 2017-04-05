@@ -71,7 +71,7 @@ export class Page2itens {
       .catch(e => console.log(e));
       
       //Consultar dados
-      db.executeSql('SELECT idItensCompras,idCompras,Descricao,Qty,valor,subTotal FROM ItensCompras WHERE idCompras = ? ',[param])
+      db.executeSql('SELECT idItensCompras,idCompras,Descricao,Qty,valor,subTotal FROM ItensCompras WHERE idCompras = ? order by Descricao,subTotal',[param])
       .then((data) =>{
         for(let i=0;i < data.rows.length;i++){
           this.items.push(data.rows.item(i));
