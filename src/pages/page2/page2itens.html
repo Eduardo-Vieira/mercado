@@ -4,10 +4,28 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>Lista de Itens da Compras</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="showSearchbar()">
+        <ion-icon name="{{iconbar}}"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
+  <ion-grid *ngIf="searchbar">
+    <ion-row>
+      <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+    </ion-row>
+  </ion-grid>
 </ion-header>
 
 <ion-content>
+ <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="ios-refresh"
+      pullingText="Atualizar lista"
+      refreshingSpinner="circles"
+      refreshingText="Carregando...">
+    </ion-refresher-content>
+  </ion-refresher>
 
 <ion-card *ngFor="let item of items">
     <ion-item>     

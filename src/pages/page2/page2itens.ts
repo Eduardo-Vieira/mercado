@@ -7,12 +7,20 @@ import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 import { Page2ItensAdd } from './page2itensadd';
 
 @Component({
+  selector: 'page-page2',
   templateUrl: 'page2itens.html'
 
 })
 export class Page2itens {
 
+    searchQuery: string = '';
+    
+    searchbar:boolean = false;
+
+    iconbar:string = 'search';
+
     idCompras : number;
+    
     TotalItens: number;
 
     items: Array<{idItensCompras:number, idCompras: number, Descricao: string, Qty: number, valor: number, subTotal: number}>;
@@ -20,7 +28,7 @@ export class Page2itens {
     constructor(public navCtrl: NavController, public navParams: NavParams, private sqlite: SQLite) {
          this.idCompras = navParams.get('idCompras');
     }
-    
+        
     getMoeda(price: number) {
         return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(price);
     }
@@ -57,8 +65,10 @@ export class Page2itens {
         this.findDados(this.idCompras);
    }
 
-   findDados(param){
+   findDados(param,val:string=null){
     // Consultar dados no banco de dados
+    (val===null) ? val ='%': val ='%'+val+'%';
+    
     this.items = [];
     this.sqlite.create({
       name: 'dbMercadoIonic2.db',
@@ -71,7 +81,7 @@ export class Page2itens {
       .catch(e => console.log(e));
       
       //Consultar dados
-      db.executeSql('SELECT idItensCompras,idCompras,Descricao,Qty,valor,subTotal FROM ItensCompras WHERE idCompras = ? order by Descricao,subTotal',[param])
+      db.executeSql("SELECT idItensCompras,idCompras,Descricao,Qty,valor,subTotal FROM ItensCompras WHERE idCompras = ? and Descricao LIKE ? order by Descricao,subTotal",[param,val])
       .then((data) =>{
         for(let i=0;i < data.rows.length;i++){
           this.items.push(data.rows.item(i));
@@ -93,5 +103,22 @@ export class Page2itens {
     
     // Fim SQLiteObject  
     }).catch(e => console.log(e));
+  }
+
+  getItems(ev: any) {
+    let val = ev.target.value;
+    // find db
+    this.findDados(this.idCompras,val);
+  }
+
+  showSearchbar(){
+    (this.searchbar===false) ? this.searchbar=true:this.searchbar=false;
+    (this.iconbar === 'search') ? this.iconbar ='close':this.iconbar ='search';
+
+  }
+
+  doRefresh(refresher) {
+    this.findDados(this.idCompras);
+    refresher.complete();
   }
 }
