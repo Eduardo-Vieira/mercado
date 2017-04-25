@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar color="primary">
+  <ion-navbar color="dark">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -17,14 +17,14 @@
       <strong>Data:</strong> {{item.Data}}<br>
       <strong>Nota:</strong> {{item.Nota}}<br>
       <strong>Total:</strong> {{getMoeda(item.Total)}}<br>
-      <button color="danger" ion-button small icon-left (click)="deleta(item.idCompras)"><ion-icon name="trash"></ion-icon> Deleta</button>
-      <button color="warning" ion-button small icon-left (click)="editar(item)"><ion-icon name="create"></ion-icon> Editar</button>
-      <button color="info" ion-button small icon-left (click)="itens(item.idCompras)"><ion-icon name="basket"></ion-icon> Itens</button>
+      <button color="title" ion-button small icon-left (click)="deleta(item.idCompras)"><ion-icon name="trash"></ion-icon> Deleta</button>
+      <button color="title" ion-button small icon-left (click)="editar(item)"><ion-icon name="create"></ion-icon> Editar</button>
+      <button color="title" ion-button small icon-left (click)="itens(item.idCompras)"><ion-icon name="basket"></ion-icon> Itens</button>
     </ion-item>
   </ion-card>
 
 <ion-fab right bottom>
-  <button ion-fab color="secondary" (click)="addReg()"><ion-icon name="add"></ion-icon></button>
+  <button ion-fab color="title" (click)="addReg()"><ion-icon name="add"></ion-icon></button>
 </ion-fab>
 
 </ion-content>

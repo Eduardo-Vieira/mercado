@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar color="primary">
+  <ion-navbar color="dark">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -7,7 +7,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
 
     <form #form="ngForm" (ngSubmit)="submitForm(dados)" novalidate>
       <ion-item>
@@ -16,16 +16,16 @@
       </ion-item>
       <ion-item>
         <ion-label floating>Quantidade</ion-label>
-        <ion-input type="text" required [(ngModel)]="dados.Qty" name="Qty" ngControl="Qty"></ion-input>
+        <ion-input type="number" required [(ngModel)]="dados.Qty" name="Qty" ngControl="Qty"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label floating>Preço Unitário</ion-label>
-        <ion-input type="text" required [(ngModel)]="dados.valor" name="valor" ngControl="valor"></ion-input>
+        <ion-input type="number" required [(ngModel)]="dados.valor" name="valor" ngControl="valor"></ion-input>
       </ion-item>
       <ion-item>
            SubTotal: {{getMoeda(dados.Qty*dados.valor)}}
       </ion-item>      
-      <button ion-button type="submit" block>Salvar</button>
+      <button ion-button  color="dark" type="submit" block>Salvar</button>
     </form>
 
 </ion-content>

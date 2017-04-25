@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar color="primary">
+  <ion-navbar color="dark">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -7,7 +7,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
 
     <form #form="ngForm" (ngSubmit)="submitForm(dados)" novalidate>
       <ion-item>
@@ -18,7 +18,7 @@
         <ion-label floating>Nota ou nome do mercado</ion-label>
         <ion-textarea [(ngModel)]="dados.nota" name="nota" ngControl="nota"></ion-textarea>
       </ion-item>
-      <button ion-button type="submit" block>Salvar</button>
+      <button ion-button color="dark" type="submit" block>Salvar</button>
     </form>
 
 </ion-content>

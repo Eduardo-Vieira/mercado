@@ -29,11 +29,40 @@ $colors: (
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
-  dark:       #222,
+  dark:       ( base: #ff531a,
+                contrast: #f4f4f4,
+              ),
+  title:      #ff531a,
   warning:    #f0ad4e,
   info:       #5bc0de
 );
 
+ion-menu{
+  .item-inner{
+    border: none !important;
+  }
+  ion-list{
+    border: none !important;
+  }
+  ion-item{
+     border: none !important;
+     .list-ios{
+       border-top:none !important;
+     }
+  }
+  .scroll-content{
+    background-image: url(../assets/img/bgmenu2.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    
+  }
+  .item-md, .item-ios{
+    background-color: transparent !important;
+  }
+  .item-md , .item-ios{
+    color: color($colors,title);
+  }
+}
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here

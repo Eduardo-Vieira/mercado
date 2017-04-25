@@ -21,7 +21,7 @@ export class Page2itens {
 
     idCompras : number;
     
-    TotalItens: number;
+    TotalItens: number= 0.00;
 
     items: Array<{idItensCompras:number, idCompras: number, Descricao: string, Qty: number, valor: number, subTotal: number}>;
 
