@@ -38,6 +38,12 @@ $colors: (
 );
 
 ion-menu{
+  ion-avatar {
+    border: solid 3px #ff531a;
+    background-color: #f4f4f4;
+    border-radius: 50%;
+    padding: 5px;
+  }
   .item-inner{
     border: none !important;
   }
